@@ -11,13 +11,11 @@ var getCityWeather = function(city) {
     //make a request to the url
     fetch(apiURL)
     .then(function(response) {
-        console.log("Response:", response);
         return response.json();
-        })
-        .then(function(json) {
-            console.log("JSON:", json);
-        })
-    };
+         })
+        .then(displayWeather);
+        };
+    
 
 //takes user input of city name and inputs it as a parameter for getCityWeather()
 var citySubmit = function(event) {
@@ -27,11 +25,22 @@ var citySubmit = function(event) {
     if (cityName) {
         getCityWeather(cityName);
         cityInputEl.value = "";
+        var listHeader = document.getElementById("previous-search");
+        var previousCityEl = document.createElement("button");
+        var previousCity = listHeader.appendChild(previousCityEl);
+        previousCity.textContent = cityName;
+        previousCity.setAttribute("type", "button");
+        previousCity.setAttribute("class", "btn btn-primary btn-lg btn-block m-1");
+
     } else {
         alert("Please enter a city name");
     }
-    console.log(cityName);
 }
 
+
+var displayWeather = function () {
+    //creates element on the page with the data we got from the weather api
+    
+}
 
 userInputEl.addEventListener("click", citySubmit);
