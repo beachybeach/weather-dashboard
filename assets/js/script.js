@@ -11,25 +11,26 @@ var getCityWeather = function(city) {
     //make a request to the url
     fetch(apiURL)
     .then(function(response) {
-        if (response.ok) {
-            response.json() 
-        }
-    });
-};
+        console.log("Response:", response);
+        return response.json();
+        })
+        .then(function(json) {
+            console.log("JSON:", json);
+        })
+    };
 
-
+//takes user input of city name and inputs it as a parameter for getCityWeather()
 var citySubmit = function(event) {
     event.preventDefault();
 
     var cityName = cityInputEl.value.trim();
-
     if (cityName) {
         getCityWeather(cityName);
         cityInputEl.value = "";
     } else {
         alert("Please enter a city name");
     }
-    console.log(event);
+    console.log(cityName);
 }
 
 
