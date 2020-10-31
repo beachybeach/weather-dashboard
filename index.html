@@ -7,24 +7,28 @@
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>Weather Dashboard</title>
 </head>
-<body class="flex column">
 <header class="hero">
     <h1 class="title">Weather Dashboard</h1>
 </header>
 
-<div class="flex-row">
+
+<body class="flex column">
+<div class="container col-12">
     <div id="user-input-form" class="input-group col-3 mb-3">
         <input type="text" id="city-name" class="form-control" placeholder="City Name" aria-label="City Name" aria-describedby="button-addon2">
         <div class="input-group-append">
           <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Search</button>
         </div>
-      </div>
-      <div id="previous-search" class="btn-group-vertical col-3">
-
-      </div>
-    </div> 
-    <div class="container justify-content-end">
     </div>
+    <div id="previous-search" class="btn-group-vertical col-3">
+    </div>
+
+    <div class="card col-9 float-right" id="weather-card">
+    </div>
+
+      
+    </div> 
+    
 <script src="assets/js/script.js"></script>
 </body>
 </html>

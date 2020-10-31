@@ -1,5 +1,6 @@
-cityInputEl = document.querySelector("#city-name");
-userInputEl = document.querySelector("#button-addon2");
+var cityInputEl = document.querySelector("#city-name");
+var userInputEl = document.querySelector("#button-addon2");
+var weatherEl = document.querySelector("#weather-card");
 
 //get city weather data
 var apiKey = "9926c56f6fbd3fdacab8dafcc1b3d945";
@@ -7,13 +8,15 @@ var apiKey = "9926c56f6fbd3fdacab8dafcc1b3d945";
 //assembles the api url with the city the user entered and fetches that data
 var getCityWeather = function(city) {
     //format the github api url
-    var apiURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey;
+    var apiURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + apiKey;
     //make a request to the url
     fetch(apiURL)
     .then(function(response) {
         return response.json();
          })
-        .then(displayWeather);
+         .then(function (json) {
+         displayWeather(json);
+         })
         };
     
 
@@ -36,11 +39,12 @@ var citySubmit = function(event) {
         alert("Please enter a city name");
     }
 }
-
-
-var displayWeather = function () {
-    //creates element on the page with the data we got from the weather api
-    
+var displayWeather = function(json) {
+    for (var i = 0; i < json.weather.length; i++) {
+        var result = json.weather[i];
+        var item = document.createElement("p");
+        console.log(result);
+    }
 }
 
 userInputEl.addEventListener("click", citySubmit);
