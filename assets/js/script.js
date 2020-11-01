@@ -1,6 +1,13 @@
 var cityInputEl = document.querySelector("#city-name");
 var userInputEl = document.querySelector("#button-addon2");
 var weatherEl = document.querySelector("#weather-card");
+var cityHeader = document.getElementById("city-date");
+var tempEl = document.getElementById("temp");
+var humidityEl = document.getElementById("humidity");
+var windEl = document.getElementById("wind");
+var uvEl = document.getElementById("uv-index");
+
+var date = moment().format('MMMM Do YYYY');
 
 //get city weather data
 var apiKey = "9926c56f6fbd3fdacab8dafcc1b3d945";
@@ -14,9 +21,7 @@ var getCityWeather = function(city) {
     .then(function(response) {
         return response.json();
          })
-         .then(function (json) {
-         displayWeather(json);
-         })
+         .then(displayWeather);
         };
     
 
@@ -34,17 +39,20 @@ var citySubmit = function(event) {
         previousCity.textContent = cityName;
         previousCity.setAttribute("type", "button");
         previousCity.setAttribute("class", "btn btn-primary btn-lg btn-block m-1");
-
     } else {
         alert("Please enter a city name");
     }
 }
 var displayWeather = function(json) {
-    for (var i = 0; i < json.weather.length; i++) {
-        var result = json.weather[i];
-        var item = document.createElement("p");
-        console.log(result);
-    }
+    //creates h1 of the city's name
+    weatherEl.removeAttribute('hidden');
+
+    
+
+    
+
 }
 
+
 userInputEl.addEventListener("click", citySubmit);
+
