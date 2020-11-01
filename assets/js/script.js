@@ -6,22 +6,37 @@ var tempEl = document.getElementById("temp");
 var humidityEl = document.getElementById("humidity");
 var windEl = document.getElementById("wind");
 var uvEl = document.getElementById("uv-index");
-
+var forecast = document.getElementById("future-forecast");
 var date = moment().format('MMMM Do YYYY');
+
+var dayOne = document.getElementById("dayOne");
+var dayTwo = document.getElementById("dayTwo");
+var dayThree = document.getElementById("dayThree");
+var dayFour = document.getElementById("dayFour");
+var dayFive = document.getElementById("dayFive");
 
 //get city weather data
 var apiKey = "9926c56f6fbd3fdacab8dafcc1b3d945";
 
 //assembles the api url with the city the user entered and fetches that data
 var getCityWeather = function(city) {
-    //format the github api url
     var apiURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + apiKey;
+    var apiURLForecast = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=" + apiKey;
     //make a request to the url
     fetch(apiURL)
     .then(function(response) {
         return response.json();
          })
-         .then(displayWeather);
+         .then(json => {
+            displayWeather(json);
+            return fetch(apiURLForecast);
+         }) 
+         .then(response => {
+             return response.json();
+         })
+         .then(json => {
+            return displayForecast(json);
+         })
         };
     
 
@@ -59,5 +74,17 @@ var displayWeather = function(json) {
 }
 
 
-userInputEl.addEventListener("click", citySubmit);
+var displayForecast = function(json) {
+    forecast.removeAttribute('hidden');
+    dayOne.textContent = json.list[2].temp;
+    dayTwo.textContent = json.list[10].temp;
+    dayThree.textContent = json.list[18].temp;
+    dayFour.textContent = json.list[26].temp;
+    dayFive.textContent = json.list[34].temp;
+}
 
+
+
+
+
+userInputEl.addEventListener("click", citySubmit);
