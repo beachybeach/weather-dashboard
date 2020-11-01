@@ -44,13 +44,18 @@ var citySubmit = function(event) {
     }
 }
 var displayWeather = function(json) {
-    //creates h1 of the city's name
+    //toggles weatherEl from hidden to visible to show weather data
     weatherEl.removeAttribute('hidden');
-
+    //creates h1 of the city's name and current date
+    cityHeader.textContent = json.name + " " + date;
+    //display current temperature
+    tempEl.textContent = json.main.temp;
+    //display humidity
+    humidityEl.textContent = json.main.humidity;
+    //display wind speed
+    windEl.textContent = json.wind.speed + "MPH";
+    //display UV index
     
-
-    
-
 }
 
 
