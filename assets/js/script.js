@@ -85,7 +85,7 @@ var citySubmit = function(event) {
         var previousCity = listHeader.appendChild(previousCityEl);
         previousCity.textContent = cityName;
         previousCity.setAttribute("type", "button");
-        previousCity.setAttribute("class", "btn btn-primary btn-lg btn-block m-1");
+        previousCity.setAttribute("class", "btn btn-info btn-lg btn-block m-1");
     } else {
         alert("Please enter a city name");
     }

@@ -5,12 +5,13 @@
 
 html {
   height: 100%;
+  
 }
-/*body {
+body {
     margin: 0;
     padding: 0;
-} */
-
+    
+} 
 .flex-column {
     display: flex;
     flex-direction: column;
@@ -21,17 +22,25 @@ html {
   header .title {
     font-size: 4rem;
     padding: 3% 4%;
-    background-image: url("../media/clouds.jpg");
     color: white;
     font-weight: bold;
     text-align: center;
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    background-image: url("../media/clouds.jpg");
   }
 
   #weather-card {
-    color: #33ACFF;
+    color: white;
+    background-color: lightgray;
+    padding: 15px;
+    box-shadow: 10px 10px rgba(0,0,0,0.2);
   }
 
   #future-forecast .card {
     width: 18rem;
+    background-color: lightgray;
+    color: white;
+    box-shadow: 10px 10px rgba(0,0,0,0.2);
   }
+
+ 
