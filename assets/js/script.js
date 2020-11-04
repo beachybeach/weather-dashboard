@@ -33,7 +33,7 @@ var getCityWeather = function(city) {
     var apiURLForecast = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=" + apiKey;
     //make a request to the url
     fetch(apiURL)
-    .then(function(response) {
+    .then(response => {
         return response.json();
          })
          .then(json => {
@@ -86,10 +86,18 @@ var citySubmit = function(event) {
         previousCity.textContent = cityName;
         previousCity.setAttribute("type", "button");
         previousCity.setAttribute("class", "btn btn-info btn-lg btn-block m-1");
+        previousCity.setAttribute("id", "newBtn")
+        previousCity.addEventListener("click", function() {
+            getCityWeather(cityName);
+        });
+        
     } else {
         alert("Please enter a city name");
     }
 }
+
+    
+
 var displayWeather = function(json) {
     //toggles weatherEl from hidden to visible to show weather data
     weatherEl.removeAttribute('hidden');
@@ -122,6 +130,8 @@ var displayForecast = function(json) {
     dayFiveHumidity.textContent = json.list[34].main.humidity;
     getUVIndex(json);
 }
+
+
 
 
 
