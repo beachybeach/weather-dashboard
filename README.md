@@ -2,7 +2,7 @@
 ## [Application Link](https://beachybeach.github.io/weather-dashboard/)
 
 ## Screenshot
-<img width="500" src="./assets/images/screenshot.png">
+<img width="500" src="./assets/media/screenshot.png">
 
 This is a weather dashboard that provides real time data to any U.S. city. The user is able to search any city in the search bar and see the current days weather as well as a five day forecast.
 
